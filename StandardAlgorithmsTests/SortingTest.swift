@@ -6,30 +6,43 @@
 //
 
 import XCTest
+@testable import StandardAlgorithms
 
 final class SortingTest: XCTestCase {
+    func testAllMergeSortIntAscending () {
+        //arrange --setup
+        let sorting = Sorting()
+        let testCases = [
+                            (a: [3, 1, 4, 5, 2], expectedA: [1, 2, 3, 4, 5]),
+                            (a: [7, 3, 1, 4, 9, 5, 8, 2, 6], expectedA: [1, 2, 3, 4, 5, 6, 7, 8, 9]),
+                            (a: [], expectedA: []),
+                            (a: [2, 1, 2, 1, 5, 3, 4], expectedA: [1, 1, 2, 2, 3, 4, 5]),
+                            (a: [7, -1, 5, 0, -2], expectedA: [-2, -1, 0, 5, 7]),
+        ]
+        //act -- run
+        //assert -- check
+        for testCase in testCases {
+            let result = sorting.mergeSort(testCase.a)
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+            XCTAssertEqual(result, testCase.expectedA)
+        }   
     }
+    func testAllBubbleSortIntAscending () {
+        //arrange --setup
+        let sorting = Sorting()
+        let testCases = [
+                            (a: [3, 1, 4, 5, 2], expectedA: [1, 2, 3, 4, 5]),
+                            (a: [7, 3, 1, 4, 9, 5, 8, 2, 6], expectedA: [1, 2, 3, 4, 5, 6, 7, 8, 9]),
+                            (a: [], expectedA: []),
+                            (a: [2, 1, 2, 1, 5, 3, 4], expectedA: [1, 1, 2, 2, 3, 4, 5]),
+                            (a: [7, -1, 5, 0, -2], expectedA: [-2, -1, 0, 5, 7]),
+        ]
+        //act -- run
+        //assert -- check
+        for testCase in testCases {
+            let result = sorting.mergeSort(testCase.a) //change to bubble
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+            XCTAssertEqual(result, testCase.expectedA)
         }
     }
-
 }
