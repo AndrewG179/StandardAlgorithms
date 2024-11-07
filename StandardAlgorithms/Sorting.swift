@@ -11,6 +11,7 @@ class Sorting {
     func mergeSort(_ x: [Int]) -> [Int] {
         let n = x.count
         if (n == 1) {return x}
+        if (n == 0) {return []}
         var sorted: [Int] = []
         let m = n / 2
         let a = mergeSort(Array(x.prefix(m)))
